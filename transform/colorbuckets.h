@@ -253,6 +253,9 @@ protected:
 public:
     ColorBucket bucket(const int p, const prevPlanes &pp) const { return buckets->findBucket(p,pp); }
     ColorRangesCB(const ColorRanges *rangesIn, ColorBuckets *cbIn) :  ranges(rangesIn), buckets(cbIn) {} //print();}
+    ~ColorRangesCB() {
+        delete buckets;
+    }
     bool isStatic() const { return false; }
     int numPlanes() const { return ranges->numPlanes(); }
     ColorVal min(int p) const { return ranges->min(p); }
